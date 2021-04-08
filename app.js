@@ -62,7 +62,10 @@ var app = new Vue({
           this.tiles[y] = []
           for(let x = 0; x < this.mapWidth; x++) {
             if(Math.random() > 0.25) {
-              let icon = Math.random() > 0.50 ? "fas fa-tree" : ""
+              let icon = ""
+              if(Math.random() > 0.50){
+                icon = Math.random() > 0.50 ? "fas fa-mountain" : "fas fa-tree"
+              }
               this.tiles[y][x] = {type: "plains", class: "plains", icon: icon}
             } else
               this.tiles[y][x] = {type: "water", class: "water", icon: "fas fa-water"}
