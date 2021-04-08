@@ -1,0 +1,67 @@
+#map-frame {
+    width: 100%;
+    overflow: scroll;
+    background-color: black;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  }
+  .tile-row{
+    display: grid;
+    grid-auto-flow: row;
+  }
+  .tile-row > .tile {
+    background-color: #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    font-size: 75px;
+  }
+  .tile-row > .tile:nth-child(even){
+    background-color: #eee;
+  }
+  /* .tile types */
+  .tile-row > .tile.water {
+    background-color: CadetBlue;
+    color: #bcdaf5;
+    animation-iteration-count: infinite;
+    animation-name: waves;
+    animation-duration: 4s;
+  }
+  .tile-row > .tile.plains {
+    background-color: DarkSeaGreen;
+    color: #365e4e;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  }
+  .tile-row > .tile.plains.borderTop {
+    border-top: 3px solid #B2BB8E;
+  }
+  .tile-row > .tile.plains.borderRight {
+    border-right: 3px solid #B2BB8E;
+  }
+  .tile-row > .tile.plains.borderBottom {
+    border-bottom: 3px solid #B2BB8E;
+  }
+  .tile-row > .tile.plains.borderLeft {
+    border-left: 3px solid #B2BB8E;
+  }
+  .tile-row > .tile.water.borderTop {
+    border-top: 3px solid #cbf6f1;
+  }
+  .tile-row > .tile.water.borderRight {
+    border-right: 3px solid #cbf6f1;
+  }
+  .tile-row > .tile.water.borderBottom {
+    border-bottom: 3px solid #cbf6f1;
+  }
+  .tile-row > .tile.water.borderLeft {
+    border-left: 3px solid #cbf6f1;
+  }
+  /* The animation code */
+  @keyframes waves {
+    0% {border-width: 3px;}
+    50% {border-width: 6px;}
+  }
+  
