@@ -4,8 +4,9 @@ var app = new Vue({
       title: 'Vue Flex Grid Tile Map',
       tiles: [],
       tileSize: 128,
-      mapWidth: 3,
-      mapHeight: 3
+      mapWidth: 64,
+      mapHeight: 64,
+      seed: 1,
     },
     created(){
       this.newMap()
@@ -57,18 +58,22 @@ var app = new Vue({
         })
       },
       newMap(){
+        noise.seed(this.seed)
+
         this.tiles = []
         for(let y = 0; y < this.mapHeight; y++) {
           this.tiles[y] = []
           for(let x = 0; x < this.mapWidth; x++) {
-            if(Math.random() > 0.25) {
+            let scale = 20
+            let elevation = noise.simplex2(x/scale, y/scale)
+            if(elevation > -0.25) {
               let icon = ""
               if(Math.random() > 0.50){
                 icon = Math.random() > 0.50 ? "fas fa-mountain" : "fas fa-tree"
               }
-              this.tiles[y][x] = {type: "plains", class: "plains", icon: icon}
+              this.tiles[y][x] = {type: "plains", class: "plains", icon: icon, elevation: elevation}
             } else
-              this.tiles[y][x] = {type: "water", class: "water", icon: "fas fa-water"}
+              this.tiles[y][x] = {type: "water", class: "water", icon: "fas fa-water", elevation: elevation}
           }
         }
         this.drawBorders()
